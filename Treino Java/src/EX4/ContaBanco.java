@@ -1,11 +1,10 @@
 package EX4;
 
-import java.lang.classfile.instruction.ReturnInstruction;
 
 public class ContaBanco {
 
     public int numConta;
-    protected String tipo; //corrente = 50 reais, poupança = 150
+    protected String tipo;
     private String dono;
     private float saldo;
     private boolean status;
@@ -37,12 +36,12 @@ public class ContaBanco {
     public void depositar(float quantidadeDeposito){
         if(this.status == true){
             this.saldo += quantidadeDeposito;
-        }else return;
+        }
     }
     public void sacar(float sacarSaldo){
         if(this.status == true && this.saldo > 0){
             this.saldo -= sacarSaldo;
-        }else return;
+        }
     }
     public void pagarMensal(){
         this.saldo -= 50;
