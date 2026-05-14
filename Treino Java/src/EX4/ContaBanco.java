@@ -6,7 +6,7 @@ public class ContaBanco {
     public int numConta;
     protected String tipo;
     private String dono;
-    private float saldo;
+    private double saldo;
     private boolean status;
 
 
@@ -33,13 +33,13 @@ public class ContaBanco {
             this.status = false;
         }
     }
-    public void depositar(float quantidadeDeposito){
-        if(this.status == true){
+    public void depositar(double quantidadeDeposito){
+        if(this.status){
             this.saldo += quantidadeDeposito;
         }
     }
-    public void sacar(float sacarSaldo){
-        if(this.status == true && this.saldo > 0){
+    public void sacar(double sacarSaldo){
+        if(this.status && this.saldo > 0){
             this.saldo -= sacarSaldo;
         }
     }
@@ -64,10 +64,10 @@ public class ContaBanco {
     public void setDono(String nomeDono){
         this.dono = nomeDono;
     }
-    public float getSaldo(){
+    public double getSaldo(){
         return this.saldo;
     }
-    public void setSaldo(float saldoConta){
+    public void setSaldo(double saldoConta){
         this.saldo = saldoConta;
     }
     public boolean getStatus(){

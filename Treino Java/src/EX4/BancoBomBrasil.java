@@ -16,132 +16,123 @@ import java.util.Scanner;
 public class BancoBomBrasil {
 
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
         ContaBanco contaCreusa = new ContaBanco("Creusa", 102, "cc");
         ContaBanco contaAlex = new ContaBanco("Alex", 103, "cp");
-        Scanner input = new Scanner(System.in);
-        int contas = 0;
 
-        while (contas != 3){
-            System.out.println("\nEscolha um cliente: ");
-            System.out.println("1° Creusa: conta corrente");
-            System.out.println("2° Alex: conta Poupança");
-            System.out.println("3° sair do programa");
-            contas = input.nextInt();
-            switch (contas){
+        int opcaoCliente;
+        do {
+
+            System.out.println("\n===== BANCO BOM BRASIL =====");
+            System.out.println("Escolha um cliente:");
+            System.out.println("1 - Creusa (Conta Corrente)");
+            System.out.println("2 - Alex (Conta Poupança)");
+            System.out.println("3 - Sair");
+            System.out.print("Opção: ");
+
+
+            opcaoCliente = input.nextInt();
+            ContaBanco contaSelecionada = null;
+            switch (opcaoCliente) {
                 case 1:
-                    int opcao = 0;
-                    System.out.println("=====\nBem-Vindo(a) Creusa\n=====");
-                    System.out.println("Selecione uma operação: ");
-                    System.out.println("1° Informações da conta");
-                    System.out.println("2° Verificar dono da conta");
-                    System.out.println("3° Verificar Numero da conta");
-                    System.out.println("4° Verificar saldo da conta");
-                    System.out.println("5° Verificar status");
-                    System.out.println("6° Realizar um deposito");
-                    System.out.println("7° Realizar um saque");
-                    System.out.println("8° Pagar Mensalidade");
-                    System.out.println("9° Sair da conta");
-                    opcao = input.nextInt();
-                        switch (opcao) {
-                            case 1:
-                                contaCreusa.infoConta();
-                                opcao = 0;
-                                break;
-                            case 2:
-                                System.out.println("Dono: " + contaCreusa.getDono());
-                                opcao = 0;
-                                break;
-                            case 3:
-                                System.out.println("Numero da conta: " + contaCreusa.getNumConta());
-                                opcao = 0;
-                                break;
-                            case 4:
-                                System.out.println("Saldo atual: " + contaCreusa.getSaldo());
-                                opcao = 0;
-                                break;
-                            case 5:
-                                System.out.println("Ativada: " + contaCreusa.getStatus());
-                                opcao = 0;
-                                break;
-                            case 6:
-                                System.out.print("Digite a quantidade a depositar: ");
-                                contaCreusa.depositar(input.nextInt());
-                                opcao = 0;
-                                break;
-                            case 7:
-                                System.out.print("Digite a quantidade do saque: ");
-                                contaCreusa.sacar(input.nextInt());
-                                opcao = 0;
-                                break;
-                            case 8:
-                                contaCreusa.pagarMensal();
-                                System.out.print("Mensalidade paga! sua conta agora possui: " + contaCreusa.getSaldo());
-                                opcao = 0;
-                                break;
-                            case 9:
-                                System.out.println("Voltando para a pagina inicial...");
-                                break;
-                        }
+                    contaSelecionada = contaCreusa;
                     break;
-                case 2:
-                    int opcao2 = 0;
-                    System.out.println("=====\nBem-Vindo(a) Alex\n=====");
-                    System.out.println("Selecione uma operação: ");
-                    System.out.println("1° Informações da conta");
-                    System.out.println("2° Verificar dono da conta");
-                    System.out.println("3° Verificar Numero da conta");
-                    System.out.println("4° Verificar saldo da conta");
-                    System.out.println("5° Verificar status");
-                    System.out.println("6° Realizar um deposito");
-                    System.out.println("7° Realizar um saque");
-                    System.out.println("8° Pagar Mensalidade");
-                    System.out.println("9° Sair da conta");
-                    opcao2 = input.nextInt();
-                    while (opcao2 !=9){
-                    switch (opcao2) {
 
-                            case 1:
-                                contaAlex.infoConta();
-                                opcao2 = 0;
-                                break;
-                            case 2:
-                                System.out.println("Dono: " + contaAlex.getDono());
-                                opcao2 = 0;
-                                break;
-                            case 3:
-                                System.out.println("Numero da conta: " + contaAlex.getNumConta());
-                                opcao2 = 0;
-                                break;
-                            case 4:
-                                System.out.println("Saldo atual: " + contaAlex.getSaldo());
-                                opcao2 = 0;
-                                break;
-                            case 5:
-                                System.out.println("Ativada: " + contaAlex.getStatus());
-                                opcao2 = 0;
-                                break;
-                            case 6:
-                                System.out.print("Digite a quantidade a depositar: ");
-                                contaAlex.depositar(input.nextInt());
-                                opcao2 = 0;
-                                break;
-                            case 7:
-                                System.out.print("Digite a quantidade do saque: ");
-                                contaAlex.sacar(input.nextInt());
-                                opcao2 = 0;
-                                break;
-                            case 8:
-                                contaAlex.pagarMensal();
-                                System.out.print("Mensalidade paga! sua conta agora possui: " + contaAlex.getSaldo());
-                                opcao2 = 0;
-                                break;
-                            case 9:
-                                System.out.println("Voltando para a pagina inicial...");
-                                break;
-                        }
-                        break;
-                }
+                case 2:
+                    contaSelecionada = contaAlex;
+                    break;
+
+                default:
+                    System.out.println("Encerrando o sistema...");
             }
-        }
+
+
+            if (contaSelecionada != null) {
+
+                int opcao;
+                do {
+
+                    System.out.println("\n===== Bem-vindo(a), "
+                            + contaSelecionada.getDono() + " =====");
+
+                    System.out.println("1 - Informações da conta");
+                    System.out.println("2 - Verificar dono");
+                    System.out.println("3 - Verificar número da conta");
+                    System.out.println("4 - Verificar saldo");
+                    System.out.println("5 - Verificar status");
+                    System.out.println("6 - Depositar");
+                    System.out.println("7 - Sacar");
+                    System.out.println("8 - Pagar mensalidade");
+                    System.out.println("9 - Voltar ao menu principal");
+
+                    System.out.print("Escolha uma opção: ");
+                    opcao = input.nextInt();
+
+                    switch (opcao) {
+
+                        case 1:
+                            contaSelecionada.infoConta();
+                            break;
+
+                        case 2:
+                            System.out.println("Dono: "
+                                    + contaSelecionada.getDono());
+                            break;
+
+                        case 3:
+                            System.out.println("Número da conta: "
+                                    + contaSelecionada.getNumConta());
+                            break;
+
+                        case 4:
+                            System.out.println("Saldo atual: R$"
+                                    + contaSelecionada.getSaldo());
+                            break;
+
+                        case 5:
+                            System.out.println("Status da conta: "
+                                    + contaSelecionada.getStatus());
+                            break;
+
+                        case 6:
+                            System.out.print("Valor do depósito: R$");
+                            double deposito = input.nextDouble();
+
+                            contaSelecionada.depositar(deposito);
+                            break;
+
+                        case 7:
+                            System.out.print("Valor do saque: R$");
+                            double saque = input.nextDouble();
+
+                            contaSelecionada.sacar(saque);
+                            break;
+
+                        case 8:
+                            contaSelecionada.pagarMensal();
+
+                            System.out.println(
+                                    "Mensalidade paga com sucesso!");
+                            System.out.println("Saldo atual: R$"
+                                    + contaSelecionada.getSaldo());
+                            break;
+
+                        case 9:
+                            System.out.println("Voltando ao menu principal...");
+                            break;
+
+                        default:
+                            System.out.println("Opção inválida!");
+                    }
+
+                } while (opcao != 9);
+            }
+
+        } while (opcaoCliente != 3);
+
+        input.close();
     }
 }
+
+
