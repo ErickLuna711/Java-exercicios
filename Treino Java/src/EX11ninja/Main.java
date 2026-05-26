@@ -27,8 +27,10 @@ public class Main {
         sasuke.nome = "Sasuke uchiha";
         sasuke.idade = 18;
         sasuke.aldeia = "Folha";
-        sasuke.ninjaStats(); //todos possuem acesso.
-        sasuke.sharinganAtivado(); //só ele tem acesso.
+        sasuke.habilidadeEspecial = "sharingan";
+        //todos possuem acesso.
+        sasuke.ninjaStats();
+
 
     }
 }
