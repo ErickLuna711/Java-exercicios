@@ -5,13 +5,13 @@ public class MetodosGerais {
     Uchiha sasuke = new Uchiha();
     Uzumaki naruto = new Uzumaki();
 
-    naruto.nome = "naruto uzumaki";
+    naruto.nome = "Naruto Uzumaki";
     naruto.idade = 18;
     naruto.aldeia = "Folha";
     //metodo sobrescrito no objeto filho uzumaki.
     naruto.habilidadeEspecial();
 
-    sasuke.nome = "sasuke uchiha";
+    sasuke.nome = "Sasuke Uchiha";
     sasuke.idade = 18;
     sasuke.aldeia = "Folha";
     //metodo sobrescrito no objeto filho uchiha.
